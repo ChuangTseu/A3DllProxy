@@ -1,0 +1,14 @@
+VSbuild
+
+CmakeCache.txt
+
+CMakeLists.txt.user
+
+*.lnk
+*.dll
+
+*.exe
+
+build
+
+

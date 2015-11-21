@@ -1,0 +1,41 @@
+Put the A3DllProxy Dll in any mod folder where you wan't to run your extension tests.
+
+To attach your own Dll, put it in the exact same folder where A3DllProxy.dll is.
+
+
+You MUST export the _RVExtension_Dev@12 symbol as in the exemple below :
+
+extern "C" {
+	__declspec (dllexport) void __stdcall RVExtension_Dev(char *output, int outputSize, const char *function);
+}
+
+
+You MUST ABSOLUTLY NOT export the standard _RVExtension@12 symbol, otherwise Arma 3 might use your Dll rather than the A3DllProxy Dll and you won't be able to use its live reloading capacities.
+
+
+USAGE :
+
+
+To detach DLL : 
+	"A3DllProxy" callExtension "-a3dllproxy d"
+	or
+	"A3DllProxy" callExtension "-a3dllproxy detach"
+
+To attach DLL : 
+	"A3DllProxy" callExtension "-a3dllproxy a"
+	or
+	"A3DllProxy" callExtension "-a3dllproxy attach"
+
+To reload DLL (useless) : 
+	"A3DllProxy" callExtension "-a3dllproxy r"
+	or
+	"A3DllProxy" callExtension "-a3dllproxy reload"
+
+To see version (useless) : 
+	"A3DllProxy" callExtension "-a3dllproxy v"
+	or
+	"A3DllProxy" callExtension "-a3dllproxy version"
+
+
+Anything else will just be forwarded as is to your custom DLL.
+
